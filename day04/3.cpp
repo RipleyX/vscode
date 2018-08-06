@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -19,9 +20,9 @@ int getHeight(avl* root)
     return root->height;
 }
 
-int updateHeight(avl* root)
+void updateHeight(avl* root)
 {
-    return max(getHeight(root->lchild), getHeight(root->rchild)) + 1;
+    root->height = max(getHeight(root->lchild), getHeight(root->rchild)) + 1;
 }
 
 int getBalanceFactor(avl* root)
@@ -70,7 +71,11 @@ void insert(avl*& root, int key)
                     leftRotate(root->lchild);
                     rightRotate(root);
                 }
-            } else if (getBalanceFactor(root) == -2) {
+            }
+        } else {
+            insert(root->rchild, key);
+            updateHeight(root);
+            if (getBalanceFactor(root) == -2) {
                 if (getBalanceFactor(root->rchild) == 1) { //RR
                     leftRotate(root);
                 } else { //RL
@@ -78,8 +83,6 @@ void insert(avl*& root, int key)
                     leftRotate(root);
                 }
             }
-        } else {
-            insert(root->rchild, key);
         }
     }
 }
@@ -150,6 +153,7 @@ void erase(avl*& root, int key)
         //updateHeight(root);
     }
 }
+
 void print(avl* root)
 {
     if (root) {
