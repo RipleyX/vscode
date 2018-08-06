@@ -36,6 +36,7 @@
         "array": "cpp",
         "string_view": "cpp",
         "initializer_list": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "istream": "cpp"
     } // 效果效果比cpptools要好
 }

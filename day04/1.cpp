@@ -37,7 +37,7 @@ bool operator<(node i, node j) { return (i.fq > j.fq); }
 
 int main(int argc, char const* argv[])
 {
-    priority_queue<node> q;
+    priority_queue<node> q; //使用优先级队列
     string s;
     // while (getline(cin, s)) {
     //     node* n = new node();
@@ -47,7 +47,7 @@ int main(int argc, char const* argv[])
     //     q.push(*n);
     // }
 
-    // while (q.size() > 1) {
+    // while (q.size() > 1) { //每次选频度最低的两棵树合成一棵树入队
     //     node n;
     //     node* lc = new node();
     //     node* rc = new node();
@@ -62,11 +62,11 @@ int main(int argc, char const* argv[])
     //     q.push(n);
     // }
 
-    // node hfmtree = q.top();
+    // node hfmtree = q.top(); //剩下的一棵树为huffman树
     // q.pop();
 
     // vector<table> hfmtable;
-    // preSearch(&hfmtree, "", hfmtable);
+    // preSearch(&hfmtree, "", hfmtable); //先序遍历生成huffman编码表
 
     // fstream out("hfmtree.txt", ios::out);
     // for (int i = 0; i < hfmtable.size(); i++) {
@@ -90,7 +90,7 @@ int main(int argc, char const* argv[])
 
     getline(cin, s);
     string codeText = "";
-    for (int i = 0; i < s.size(); i++) {
+    for (int i = 0; i < s.size(); i++) { //顺序查表编码
         for (int j = 0; j < hfmtable1.size(); j++) {
             if (s[i] == hfmtable1[j].ch) {
                 codeText += (hfmtable1[j].code + "  ");

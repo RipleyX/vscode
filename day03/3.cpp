@@ -11,7 +11,7 @@ int main(int argc, char const* argv[])
     }
     for (int i = 1; i < v.size(); i++) {
         for (int j = i - 1; j >= -1; j--) {
-            if (j == -1 or v[i] >= v[j]) {
+            if (j == -1 or v[i] >= v[j]) { //插入排序，哨兵为j=-1
                 int tmp = v[i];
                 v.erase(v.begin() + i);
                 v.insert(v.begin() + j + 1, tmp);

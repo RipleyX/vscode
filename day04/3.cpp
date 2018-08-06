@@ -61,10 +61,10 @@ void insert(avl*& root, int key)
         root->rchild = nullptr;
         root->height = 1;
     } else {
-        if (root->key > key) {
+        if (root->key > key) { //值小于当前节点则在左子树插入
             insert(root->lchild, key);
-            updateHeight(root);
-            if (getBalanceFactor(root) == 2) {
+            updateHeight(root); //插入操作后更新高度
+            if (getBalanceFactor(root) == 2) { //平衡调整
                 if (getBalanceFactor(root->lchild) == 1) { //LL
                     rightRotate(root);
                 } else { //LR
@@ -72,10 +72,10 @@ void insert(avl*& root, int key)
                     rightRotate(root);
                 }
             }
-        } else {
+        } else { //值大于当前节点则在右子树插入
             insert(root->rchild, key);
-            updateHeight(root);
-            if (getBalanceFactor(root) == -2) {
+            updateHeight(root); //插入操作后更新高度
+            if (getBalanceFactor(root) == -2) { //平衡调整
                 if (getBalanceFactor(root->rchild) == 1) { //RR
                     leftRotate(root);
                 } else { //RL
@@ -95,15 +95,15 @@ void find(avl* root, int key)
     } else {
         if (root->key == key) {
             cout << "Found!" << endl;
-        } else if (root->key > key) {
+        } else if (root->key > key) { //值小于当前节点则在左子树查找
             find(root->lchild, key);
         } else {
-            find(root->rchild, key);
+            find(root->rchild, key); //值大于当前节点则在右子树查找
         }
     }
 }
 
-avl* findPredecessor(avl* root)
+avl* findPredecessor(avl* root) //查找直接前驱
 {
     if (root == nullptr) {
         return root;
@@ -121,10 +121,10 @@ void erase(avl*& root, int key)
     if (root == nullptr) {
         return;
     } else {
-        updateHeight(root);
+        updateHeight(root); //每次执行删除操作后在父节点处更新高度
     }
 
-    if (root->key > key) {
+    if (root->key > key) { //左右子树执行删除操作后只可能产生RR or LL
         erase(root->lchild, key);
         if (getBalanceFactor(root) == -2) { //RR
             leftRotate(root);
@@ -137,7 +137,7 @@ void erase(avl*& root, int key)
         }
         //updateHeight(root);
     } else {
-        if (root->lchild == nullptr) {
+        if (root->lchild == nullptr) { //有一个子树为空，另一个子树替代当前结点
             avl* ptr = root;
             root = root->rchild;
             delete ptr;
@@ -145,7 +145,7 @@ void erase(avl*& root, int key)
             avl* ptr = root;
             root = root->lchild;
             delete ptr;
-        } else {
+        } else { //子树均非空则直接前驱替代当前结点，并循环删除直接前驱
             avl* pre = findPredecessor(root);
             root->key = pre->key;
             erase(root->lchild, pre->key);
@@ -154,7 +154,7 @@ void erase(avl*& root, int key)
     }
 }
 
-void print(avl* root)
+void print(avl* root) //中序遍历
 {
     if (root) {
         print(root->lchild);
