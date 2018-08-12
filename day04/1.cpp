@@ -39,18 +39,20 @@ int main(int argc, char const* argv[])
 {
     priority_queue<node> q; //使用优先级队列
     string s;
-    // while (getline(cin, s)) {
-    //     node* n = new node();
+    // while (getline(cin, s))
+    // {
+    //     node *n = new node();
     //     sscanf(s.c_str(), "%c %d", &n->ch, &n->fq);
     //     n->lchild = nullptr;
     //     n->rchild = nullptr;
     //     q.push(*n);
     // }
 
-    // while (q.size() > 1) { //每次选频度最低的两棵树合成一棵树入队
+    // while (q.size() > 1)
+    // { //每次选频度最低的两棵树合成一棵树入队
     //     node n;
-    //     node* lc = new node();
-    //     node* rc = new node();
+    //     node *lc = new node();
+    //     node *rc = new node();
     //     *lc = q.top();
     //     q.pop();
     //     *rc = q.top();
@@ -69,7 +71,8 @@ int main(int argc, char const* argv[])
     // preSearch(&hfmtree, "", hfmtable); //先序遍历生成huffman编码表
 
     // fstream out("hfmtree.txt", ios::out);
-    // for (int i = 0; i < hfmtable.size(); i++) {
+    // for (int i = 0; i < hfmtable.size(); i++)
+    // {
     //     out << hfmtable[i].ch << ":" << hfmtable[i].code << endl;
     // }
     // out.close();
