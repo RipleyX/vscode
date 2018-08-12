@@ -5,6 +5,7 @@
             "intelliSenseMode": "clang-x64",
             "cppStandard": "c++17",
             "cStandard": "c11",
+            "compilerPath": "C:/msys64/mingw64/bin/gcc.exe",
             "includePath": [
                 "${workspaceRoot}",
                 "C:/msys64/mingw64/include",
