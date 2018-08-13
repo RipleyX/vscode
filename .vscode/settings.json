@@ -29,6 +29,7 @@
     ],
     "clang.completion.enable": true,
     "files.associations": {
+        "*.makefile": "makefile",
         "ostream": "cpp",
         "iostream": "cpp",
         "iosfwd": "cpp",
@@ -37,6 +38,7 @@
         "string_view": "cpp",
         "initializer_list": "cpp",
         "utility": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "bitset": "cpp"
     } // 效果效果比cpptools要好
 }
